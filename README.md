@@ -97,11 +97,12 @@ see scripts/setup/install-utils-mac.sh
     ![kubefwd](images/kubefwd-ports.png)
 
     One can now access the services as follows:
+
     | Service | URL     |
     | ------- | ------- |
     | Ozone Manager | http://om-public:9874 |
     | Ozone S3 Bucket Explorer | http://s3g-public:9878/valuations?browser=true |
-    | Zeppelin | http://zeppelin-server |
+    | Zeppelin | http://zeppelin-server/#/ |
 
     and K8s Dashboard
     ```
