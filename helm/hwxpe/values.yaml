@@ -1,0 +1,41 @@
+# Default values for hwxpe.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: amolthacker/ce-o3
+  tag: latest
+  pullPolicy: IfNotPresent
+
+name: "ve"
+
+liveness:
+    port: 7000
+
+env:
+  podEndpoint: hwxpe
+  httpPort: 7777
+  seedNodes: "ve-ctrl-0.ve-ctrl,ve-ctrl-1.ve-ctrl"
+
+deployment:
+  name: "ve"
+  label: "ve"
+  replicaCount: 2
+  command: '["/bin/sh", "-c", "java -Djava.library.path=/usr/local/lib -cp /hwx-pe/compute/compute-engine-akka-0.1.0-ve.jar com.hwx.pe.valengine.akka.Valengine 7000 om-0.om"]'
+
+service:
+  name: "ve-ctrl"
+
+statefulSet:
+  name: "ve-ctrl"
+  label: "ve-ctrl"
+  replicaCount: 2
+  command: '["/bin/sh", "-c", "HOST_NAME=${POD_NAME}.ve-ctrl java -cp /hwx-pe/compute/compute-engine-akka-0.1.0-ve.jar com.hwx.pe.valengine.akka.Controller"]'
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

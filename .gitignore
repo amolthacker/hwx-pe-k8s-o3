@@ -1,0 +1,38 @@
+*.class
+*.log
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+*.iml
+
+# VS Code specific
+.settings
+.classpath
+.project
+.vscode
+.DS_store
+.factoryPath
+
+# Temp
+conf
+libs
+temp/
+temp/*.yaml
+spark-o3-k8s
+scripts/setup-local
+scripts/gcp
+redeploy-gce.sh
+
+

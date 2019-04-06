@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  labels:
+    chart: {{ .Chart.Name }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    run: {{ .Values.statefulSet.label }}
+  name: {{ .Values.statefulSet.name }}
+spec:
+  serviceName: {{ .Values.statefulSet.name }}
+  replicas: {{ .Values.statefulSet.replicaCount }}
+  selector:
+    matchLabels:
+      run: {{ .Values.statefulSet.label }}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.statefulSet.label }}
+    spec:
+      containers:
+      - name: {{ .Values.statefulSet.name }}
+        image: {{ .Values.image.repository }}
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: SEED_NODES
+          value: {{ .Values.env.seedNodes }}
+        command: {{ .Values.statefulSet.command }}
+        livenessProbe:
+          tcpSocket:
+            port: {{ .Values.liveness.port }}
+        ports:
+        - containerPort: {{ .Values.liveness.port }}
+          protocol: TCP
+          name: comm
+        - containerPort: {{ .Values.env.httpPort }}
+          protocol: TCP
+          name: http

@@ -1,0 +1,10 @@
+<configuration>
+<property><name>ozone.scm.block.client.address</name><value>scm-0.scm</value></property>
+<property><name>ozone.enabled</name><value>true</value></property>
+<property><name>ozone.scm.datanode.id</name><value>/data/datanode.id</value></property>
+<property><name>ozone.scm.client.address</name><value>scm-0.scm</value></property>
+<property><name>hdds.prometheus.endpoint.enabled</name><value>true</value></property>
+<property><name>ozone.metadata.dirs</name><value>/data/metadata</value></property>
+<property><name>ozone.scm.names</name><value>scm-0.scm</value></property>
+<property><name>ozone.om.address</name><value>om-0.om</value></property>
+</configuration>

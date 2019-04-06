@@ -1,0 +1,60 @@
+#!/bin/bash
+
+
+usage(){
+	echo "Usage: $0 "
+    echo "  -t, --k8s-type    <mkube|gke|eks|aks>   : K8s Type"
+	echo "  -n, --num-jobs    <num_jobs>            : No.of Valuation Jobs"
+	echo "  -s, --compute-svc <compute_svc_address> : Compute Service DNS/PIP"
+	echo "  -h, --help                              : Help"
+	exit 1
+}
+
+[[ $# -ne 6 ]] && usage
+
+while [[ $# -gt 1 ]]
+do
+key="$1"
+
+case $key in
+    -t|--k8s-type)
+    K8S_TYPE="$2"
+    shift
+    ;;
+    -n|--num-jobs)
+    NUM_JOBS="$2"
+    shift
+    ;;
+    -s|--compute-svc)
+    COMPUTE_SVC="$2"
+    shift
+    ;;
+    -h|--help)
+    usage
+    shift
+    ;;
+    *)
+    ;;
+esac
+shift # past argument or value
+done
+
+metrics=( "FwdRate" "NPV" "OptionPV")
+
+for (( i=1; i<=$NUM_JOBS; i++))
+do
+    rand_metric=${metrics[ RANDOM % ${#metrics[@]} ]}
+    job_id=$(( ( RANDOM % 1000 )  + 1 ))
+    num_trades_in_job=$(( ( RANDOM % 99 )  + 1 ))
+
+    if [ $K8S_TYPE = "mkube" ]; then
+        echo "http://$COMPUTE_SVC/valQuery?metric=$rand_metric&numTrades=$num_trades_in_job"
+        curl -X GET 'http://'"$COMPUTE_SVC"'/valQuery?metric='"$rand_metric"'&numTrades='"$num_trades_in_job"''
+    else
+        echo "http://$COMPUTE_SVC/ve-svc/valQuery?metric=$rand_metric&numTrades=$num_trades_in_job"
+        curl -X GET 'http://'"$COMPUTE_SVC"'/ve-svc/valQuery?metric='"$rand_metric"'&numTrades='"$num_trades_in_job"''
+    fi
+
+    echo "Submitted Job $job_id : $rand_metric for $num_trades_in_job trades ..."
+    sleep 1
+done

@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    chart: {{ .Chart.Name }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    run: {{ .Values.deployment.label }}
+  name: {{ .Values.deployment.name }}
+spec:
+  replicas: {{ .Values.deployment.replicaCount }}
+  selector:
+    matchLabels:
+      run: {{ .Values.deployment.label }}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.deployment.label }}
+    spec:
+      containers:
+      - name: {{ .Values.deployment.name }}
+        image: {{ .Values.image.repository }}
+        env:
+        - name: SEED_NODES
+          value: {{ .Values.env.seedNodes }}
+        - name: HOST_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        command: {{ .Values.deployment.command }}
+        livenessProbe:
+          tcpSocket:
+            port: {{ .Values.liveness.port }}
+        ports:
+        - containerPort: {{ .Values.liveness.port }}
+          protocol: TCP

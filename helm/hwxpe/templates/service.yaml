@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.service.name }}
+  labels:
+    chart: {{ .Chart.Name }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  ports:
+  - port: {{ .Values.liveness.port }}
+    protocol: TCP
+    targetPort: {{ .Values.liveness.port }}
+    name: comm
+  - port: {{ .Values.env.httpPort }}
+    protocol: TCP
+    targetPort: {{ .Values.env.httpPort }}
+    name: http
+  selector:
+    run: {{ .Values.service.name }}
+  clusterIP: None
