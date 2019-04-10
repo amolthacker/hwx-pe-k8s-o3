@@ -85,10 +85,11 @@ object Valengine {
 
   def main(args: Array[String]): Unit =
   {
-    if(args.length != 2) System.exit(1)
+    if(args.length != 3) System.exit(1)
 
     val port = args(0)
     val omHost = args(1)
+    var o3Bucket = args(2)
 
     val config = ConfigFactory.parseString(s"${Properties.AKKA_REMOTE_PORT}=$port")
                   .withFallback(ConfigFactory.parseString(s"${Properties.AKKA_CLUSTER_ROLES} = [valeng]"))
@@ -97,7 +98,7 @@ object Valengine {
     val system = ActorSystem(config.getString(Properties.VALENGINE_CLUSTER_NAME), config)
     system.actorOf(Props[Valengine], name = "valeng")
 
-    o3Sink = O3Sink.instance(omHost)
+    o3Sink = O3Sink.instance(omHost, o3Bucket)
     o3Sink.info()
     
     Runtime.getRuntime.addShutdownHook(new Thread(new Runnable {
