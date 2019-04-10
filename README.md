@@ -3,7 +3,7 @@
 Cloud native risk analytics application stack leveraging
  * _Risk Calc Engine_ built using Akka Cluster [as detailed here](https://github.com/amolthacker/hwx-pe-k8s-akka)
  * _Cloud Native Object Store_ in [Apache Hadoop Ozone](https://hadoop.apache.org/ozone/)
- * _Risk Aggregation and Analytics Engine_ using [Apache Spark](https://spark.apache.org/) on [Ozone]((https://hadoop.apache.org/ozone/))
+ * _Risk Aggregation and Analytics Engine_ using [Apache Spark](https://spark.apache.org/) on [Ozone](https://hadoop.apache.org/ozone/)
  * _Analytics Notebooks_ using [Apache Zeppelin](https://zeppelin.apache.org/)
 
 all running on [K8s](https://kubernetes.io/) equipped with [Prometheus](https://prometheus.io/) for metrics and monitoring.
@@ -12,9 +12,9 @@ all running on [K8s](https://kubernetes.io/) equipped with [Prometheus](https://
 ## Architecture
 
 ![app-arch](images/risk-analytics-app-arch.png)
-
-![infra](images/infra-on-k8s.png)
 ![app](images/app-on-k8s.png)
+![infra](images/infra-on-k8s.png)
+
 
 
 ## Tech Stack
@@ -24,12 +24,13 @@ all running on [K8s](https://kubernetes.io/) equipped with [Prometheus](https://
 |macOS | Mojave v10.14.3 |
 |Minikube | 1.0.0 (VirtualBox 5.2.22) |
 |Kubernetes | v1.14.0 |
+|Docker | CE 18.09.2 |
 |Helm | v2.13.1 |
 |Prometheus | 2.6 (w/ prometheus-operator) |
 |Skaffold | v0.26.0 |
 |Apache Hadoop Ozone | 0.4-ozone (rev 8d1c2184283ab292b44022c55668cba00d885181) |
-|Apache Spark | 3.0.0-SNAPSHOT (rev a15f17ce277e21d4a1e6b6018a2faea1549d5506) |
-|Apache Zeppelin | 0.9.0-SNAPSHOT (rev 97c845a6f39e60d93a553d9b438bb11fb38e0497) |
+|Apache Spark | customized fork based off of  3.0.0-SNAPSHOT (rev a15f17ce277e21d4a1e6b6018a2faea1549d5506) |
+|Apache Zeppelin | customized fork based off of  0.9.0-SNAPSHOT (rev 97c845a6f39e60d93a553d9b438bb11fb38e0497) |
 
 
 ## Prerquisites (for Mac)
@@ -137,3 +138,5 @@ see scripts/setup/install-utils-mac.sh
 
     ![zeppelin-nb-1](images/zeppelin-nb-1.png)
     ![zeppelin-nb-2](images/zeppelin-nb-2.png)
+    ![spark-dashboard](images/spark-zeppelin-dashboard.png)
+
