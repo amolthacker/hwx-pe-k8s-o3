@@ -21,7 +21,7 @@ deployment:
   name: "ve"
   label: "ve"
   replicaCount: 2
-  command: '["/bin/sh", "-c", "java -Djava.library.path=/usr/local/lib -cp /hwx-pe/compute/compute-engine-akka-0.1.0-ve.jar com.hwx.pe.valengine.akka.Valengine 7000 om-0.om"]'
+  command: '["/bin/sh", "-c", "java -Djava.library.path=/usr/local/lib -cp /hwx-pe/compute/compute-engine-akka-0.1.0-ve.jar com.hwx.pe.valengine.akka.Valengine 7000 om-0.om valuations"]'
 
 service:
   name: "ve-ctrl"
