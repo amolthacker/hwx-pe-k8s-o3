@@ -140,3 +140,10 @@ see scripts/setup/install-utils-mac.sh
     ![zeppelin-nb-2](images/zeppelin-nb-2.png)
     ![spark-dashboard](images/spark-zeppelin-dashboard.png)
 
+## Credits and References
+
+ * Thanks to [Anu Engineer](https://www.linkedin.com/in/anu-engineer-2052b2/), [Marton Elek](https://github.com/elek) for guidance
+
+ * [Apache Hadoop Ozone](https://hadoop.apache.org/ozone/)
+ * [Apache Spark on Kubernetes](https://spark.apache.org/docs/latest/running-on-kubernetes.html)
+ * [Apache Zeppelin on Kubernetes](https://zeppelin.apache.org/docs/0.9.0-SNAPSHOT/quickstart/kubernetes.html)
