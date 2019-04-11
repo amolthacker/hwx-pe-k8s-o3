@@ -28,9 +28,9 @@ all running on [K8s](https://kubernetes.io/) equipped with [Prometheus](https://
 |Helm | v2.13.1 |
 |Prometheus | 2.6 (w/ prometheus-operator) |
 |Skaffold | v0.26.0 |
-|Apache Hadoop Ozone | 0.4-ozone (rev 8d1c2184283ab292b44022c55668cba00d885181) |
-|Apache Spark | customized fork based off of  3.0.0-SNAPSHOT (rev a15f17ce277e21d4a1e6b6018a2faea1549d5506) |
-|Apache Zeppelin | customized fork based off of  0.9.0-SNAPSHOT (rev 97c845a6f39e60d93a553d9b438bb11fb38e0497) |
+|Apache Hadoop Ozone | ozone-0.4 (rev 8d1c2184283ab292b44022c55668cba00d885181) |
+|Apache Spark | [customized fork](https://github.com/amolthacker/spark) based off of  3.0.0-SNAPSHOT (rev a15f17ce277e21d4a1e6b6018a2faea1549d5506) |
+|Apache Zeppelin | [customized fork](https://github.com/amolthacker/zeppelin) based off of  0.9.0-SNAPSHOT (rev 97c845a6f39e60d93a553d9b438bb11fb38e0497) |
 
 
 ## Prerquisites (for Mac)
