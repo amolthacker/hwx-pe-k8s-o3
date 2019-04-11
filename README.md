@@ -142,7 +142,7 @@ see scripts/setup/install-utils-mac.sh
 
 ## Credits and References
 
- * Thanks to [Anu Engineer](https://www.linkedin.com/in/anu-engineer-2052b2/), [Marton Elek](https://github.com/elek) for guidance
+ * Thanks to [Anu Engineer](https://www.linkedin.com/in/anu-engineer-2052b2/), [Marton Elek](https://github.com/elek), [Bharat Viswanadham](https://www.linkedin.com/in/bharat-viswanadham-44b50b19/) for guidance
 
  * [Apache Hadoop Ozone](https://hadoop.apache.org/ozone/)
  * [Apache Spark on Kubernetes](https://spark.apache.org/docs/latest/running-on-kubernetes.html)
